@@ -34,7 +34,7 @@ class CoordinateJSONSchema(ma.Schema):
         fields = ('long', 'lat')
 
 #init schema
-CoordinateJSONSchema  = CoordinateJSONSchema(strict=True)
+CoordinateJSONSchema  = CoordinateJSONSchema()
 
 #submit JSON request
 @app.route('/CoordinateJSON', methods=['POST'])

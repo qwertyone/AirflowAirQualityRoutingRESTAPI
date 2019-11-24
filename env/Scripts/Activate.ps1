@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\anoth\Desktop\Projects\androidAF4E\restAPI\env"
+$env:VIRTUAL_ENV="D:\Projects\RESTAPI\env"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

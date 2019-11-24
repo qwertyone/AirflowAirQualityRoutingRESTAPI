@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=C:\Users\anoth\Desktop\Projects\androidAF4E\restAPI\env"
+set "VIRTUAL_ENV=D:\Projects\RESTAPI\env"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

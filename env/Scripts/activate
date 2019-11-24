@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\anoth\Desktop\Projects\androidAF4E\restAPI\env"
+VIRTUAL_ENV="D:\Projects\RESTAPI\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,4 +1,4 @@
-#import numpy as math
+#import numpy as np
 import math
 
 def gettrafficFlow(lat, long, tileSize, zoom):

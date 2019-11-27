@@ -10,13 +10,13 @@ def gettrafficFlow(lat, long, tileSize, zoom):
 
 	sinLatitude = math.sin(latitude * math.pi/180)
 
-	pixelX = ((longitude + 180) / 360) * tileSize * math.power(2, zoom)
-	pixelY = (0.5 - math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * math.pi)) * tileSize * math.power(2, zoom)
+	pixelX = ((longitude + 180) / 360) * tileSize * math.pow(2, zoom)
+	pixelY = (0.5 - math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * math.pi)) * tileSize * math.pow(2, zoom)
 
-	mapWidth = tileSize * math.power(2, zoom)
+	mapWidth = tileSize * math.pow(2, zoom)
 	mapHeight = mapWidth
 
-	numberOfTilesWide = math.power(2, zoom)
+	numberOfTilesWide = math.pow(2, zoom)
 	numberOfTilesHigh = numberOfTilesWide
 
 	print("2. The mapWidth and numberOfTiles: {0}, {1}".format(mapWidth,numberOfTilesHigh))

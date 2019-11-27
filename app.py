@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 #from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from helper import gettrafficFlow
+from helper import gettrafficFlow, azureJSONmaparser
 
 import os
 
@@ -52,8 +52,8 @@ def add_CoordinateJSON():
     zoom = 15
     
     URL = gettrafficFlow(lat, long, tileSize, zoom)
-
-    return jsonify(URL)
+    trfficData  = azureJSONmaparser(URL)
+    return trfficData
 
     #return CoordinateJSONSchema.jsonify(newCoordinateJSON)
 

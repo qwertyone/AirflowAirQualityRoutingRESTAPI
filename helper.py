@@ -1,5 +1,7 @@
 #import numpy as np
 import math
+import requests
+from mapbox_vector_tile import decode
 
 def gettrafficFlow(lat, long, tileSize, zoom):
 
@@ -35,7 +37,7 @@ def gettrafficFlow(lat, long, tileSize, zoom):
 	URL = "https://atlas.microsoft.com/traffic/flow/tile/{0}?api-version=1.0&style={1}&tileSize={2}&zoom={3}&subscription-key={4}&x={5}&y={6}".format(tileFormat, style, tileSize, zoom, key, tileX, tileY) 
 	return URL
 
-def azureJSOmatharser(URL):
+def azureJSONmaparser(URL):
         out = requests.get(url=URL)
         tileLayer = mapbox_vector_tile.decode(out.content)
         trfficData = tileLayer["Traffic flow"]

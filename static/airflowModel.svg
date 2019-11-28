@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="380px" viewBox="0 0 512 380" enable-background="new 0 0 512 380" xml:space="preserve">
+<g id="OutputtoUsers" class="fadeInNinth">
+	
+		<line fill="none" stroke="#D5CA3B" stroke-width="2" stroke-miterlimit="10" x1="351.614" y1="146.628" x2="457.062" y2="146.628"/>
+	<path fill="none" stroke="#436789" stroke-width="3" stroke-miterlimit="10" d="M328.779,155.298
+		c46.872,0.583,118.218,5.667,138.115,30.24"/>
+	<path fill="none" stroke="#DC7689" stroke-miterlimit="10" d="M362.523,138.138c36.966-0.821,77.513-6.033,87.037-15.023"/>
+	<path fill="#FFFFFF" stroke="#D5CA3B" stroke-miterlimit="10" d="M502.071,146.628c0,5.138-10.74,9.302-23.987,9.302
+		s-23.987-4.165-23.987-9.302c0-5.134,10.74-9.299,23.987-9.299S502.071,141.494,502.071,146.628z"/>
+	
+		<ellipse fill="#FFFFFF" stroke="#DC7689" stroke-width="0.5" stroke-miterlimit="10" cx="449.688" cy="120.683" rx="11.749" ry="3.918"/>
+	
+		<ellipse fill="none" stroke="#436789" stroke-width="3" stroke-miterlimit="10" cx="472.208" cy="199.991" rx="29.863" ry="14.687"/>
+	<ellipse fill="#436789" cx="472.21" cy="199.991" rx="23.571" ry="9.318"/>
+	<ellipse fill="#D5CA3B" cx="478.083" cy="146.628" rx="19.582" ry="7.594"/>
+	
+		<ellipse fill="#DC7689" stroke="#DC7689" stroke-width="0.25" stroke-miterlimit="10" cx="449.69" cy="120.683" rx="8.101" ry="2.7"/>
+</g>
+<g id="DatatoModels" class="fadeInFifth">
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="152.487,53.318 124.743,53.318 124.743,39.296 
+		152.487,39.296 152.487,34.079 173.668,46.307 152.487,58.536 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="152.487,154.307 124.743,154.307 124.743,140.285 
+		152.487,140.285 152.487,135.067 173.668,147.296 152.487,159.525 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="152.487,267.61 124.743,267.61 124.743,253.589 
+		152.487,253.589 152.487,248.368 173.668,260.6 152.487,272.826 	"/>
+</g>
+<g id="APItoModels" class="fadeInSixth">
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="281.377,43.013 309.121,43.013 309.121,57.035 
+		281.377,57.035 281.377,62.253 260.197,50.024 281.377,37.795 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="281.377,236.614 309.121,236.614 309.121,250.636 
+		281.377,250.636 281.377,255.854 260.197,243.625 281.377,231.396 	"/>
+</g>
+<polygon id="Models_to_API" class="fadeInSeventh" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="287.799,151.267 261.249,151.267 
+	261.249,137.848 287.799,137.848 287.799,132.854 308.069,144.558 287.799,156.261 "/>
+<g id="inputAPI" class="fadeInFifth">
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-width="0.5" stroke-miterlimit="10" points="395.41,106.611 411.161,106.611 
+		411.161,114.573 395.41,114.573 395.41,117.535 383.385,110.592 395.41,103.649 	"/>
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="398.466,168.648 429.318,168.648 429.318,184.24 
+		398.466,184.24 398.466,190.044 374.914,176.445 398.466,162.847 	"/>
+</g>
+<g id="Data_Sets" class="fadeInThird">
+	<g>
+		<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M118.434,65.626c0,0-1.9,10.514-54.154,10.514
+			S10.126,65.626,10.126,65.626V20.655c0,0,0,10.514,54.154,10.514s54.154-10.514,54.154-10.514V65.626z"/>
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="64.28" cy="20.655" rx="54.154" ry="10.768"/>
+		<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M118.434,169.27c0,0-1.9,10.514-54.154,10.514
+			S10.126,169.27,10.126,169.27V124.3c0,0,0,10.514,54.154,10.514s54.154-10.514,54.154-10.514V169.27z"/>
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="64.28" cy="124.3" rx="54.154" ry="10.768"/>
+		<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M118.434,277.826c0,0-1.9,10.515-54.154,10.515
+			s-54.154-10.515-54.154-10.515v-44.971c0,0,0,10.515,54.154,10.515s54.154-10.515,54.154-10.515V277.826z"/>
+		<ellipse fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="64.28" cy="232.855" rx="54.154" ry="10.77"/>
+	</g>
+	<text transform="matrix(1 0 0 1 20.3999 327.5039)"><tspan x="0" y="0" font-family="'MyriadPro-Regular'" font-size="25.2339">selected</tspan><tspan x="-2.738" y="30.28" font-family="'MyriadPro-Regular'" font-size="25.2339">data sets</tspan></text>
+</g>
+<g id="Models" class="fadeInFourth">
+	<rect x="185.096" y="9.888" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="68.343" height="278.453"/>
+	<text transform="matrix(1 0 0 1 180.4082 334.8633)" font-family="'MyriadPro-Regular'" font-size="25.2339">models</text>
+</g>
+<g id="API" class="fadeInSecond">
+	<rect x="318.45" y="24.697" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="47.313" height="239.722"/>
+	<text transform="matrix(1 0 0 1 324.6572 334.8633)" font-family="'MyriadPro-Regular'" font-size="25.2339">API</text>
+</g>
+<g id="Users" class="fadeInFirst">
+	<g>
+		<path fill="#FFFFFF" stroke="#DC7689" stroke-miterlimit="10" d="M448.607,109.291c0,0-3.074-2.119-3.074-4.216
+			c0-2.294,1.862-4.155,4.156-4.155s4.156,1.861,4.156,4.155c0,2.045-2.907,4.232-2.907,4.232s5.629,3.3,5.629,6.833v4.127
+			l-13.755-0.117v-4.01C442.813,112.549,448.607,109.291,448.607,109.291z"/>
+		<path fill="#FFFFFF" stroke="#436789" stroke-width="2" stroke-miterlimit="10" d="M469.176,169.297c0,0-8.614-5.937-8.614-11.814
+			c0-6.434,5.216-11.648,11.647-11.648s11.647,5.214,11.647,11.648c0,5.729-8.145,11.861-8.145,11.861s15.771,9.248,15.771,19.149
+			v11.565l-38.549-0.326v-11.239C452.935,178.431,469.176,169.297,469.176,169.297z"/>
+	</g>
+	<text transform="matrix(1 0 0 1 438.5195 334.8643)" font-family="'MyriadPro-Regular'" font-size="25.2339">users</text>
+</g>
+<style>
+
+.fadeInNinth{
+	animation-name:fadeIn;
+	animation-duration:21s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInEigth{
+	animation-name:fadeIn;
+	animation-duration:19s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInSeventh{
+	animation-name:fadeIn;
+	animation-duration:17s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInSixth{
+	animation-name:fadeIn;
+	animation-duration:15s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInFifth{
+	animation-name:fadeIn;
+	animation-duration:13s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInFourth{
+	animation-name:fadeIn;
+	animation-duration:11s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInThird{
+	animation-name:fadeIn;
+	animation-duration:9s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInSecond{
+	animation-name:fadeIn;
+	animation-duration:7s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+.fadeInFirst{
+	animation-name:fadeIn;
+	animation-duration:5s;
+	animation-iteration-count:1;
+	transform-origin: 100% 100%;
+}
+
+@keyframes fadeIn{
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+</style>
+</svg>

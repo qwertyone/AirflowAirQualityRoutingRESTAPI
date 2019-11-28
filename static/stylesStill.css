@@ -34,7 +34,7 @@ body{
 
 section.titleSlide, section.endSlide {
 	padding-top:25%;
-	background:#67BEEA url(../../../My%20Web%20Sites/AirFlow4Earth.github.io/SlideDeck/images/background.jpg);
+	background:#67BEEA url(../static/background.jpg);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -154,7 +154,7 @@ audio, .mejs-audio {/*hide audio player*/
 }
 
 .gaps{
-background-image:url(../../../My%20Web%20Sites/AirFlow4Earth.github.io/SlideDeck/images/road.gif);
+background-image:url(../static/road.gif);
 	background-size:150% 150%;
 	background-repeat:no-repeat;
 	background-position:center;
@@ -335,14 +335,14 @@ svg{
 }
 
 .model{
-	background-image:url(../../../My%20Web%20Sites/AirFlow4Earth.github.io/SlideDeck/media/airflowModel.svg);
+	background-image:url(../static/airflowModel.svg);
 	background-size:contain;
 	background-repeat:no-repeat;
 	background-position:center;
 	}
 	
 .running{
-	background-image:url(../../../My%20Web%20Sites/AirFlow4Earth.github.io/SlideDeck/images/runningBG.jpg);
+	background-image:url(../static/runningBG.jpg);
 	background-position:bottom;
 	background-repeat:no-repeat;
 	background-size:cover;
@@ -351,7 +351,7 @@ svg{
 	}
 
 .clima{
-	background-image:url(../../../My%20Web%20Sites/AirFlow4Earth.github.io/SlideDeck/images/climateBehaviors.jpg);
+	background-image:url(../static/climateBehaviors.jpg);
 	background-position:bottom;
 	background-repeat:no-repeat;
 	background-size:cover;
@@ -360,7 +360,7 @@ svg{
 	}
 	
 .drive{
-	background-image:url(../../../My%20Web%20Sites/AirFlow4Earth.github.io/SlideDeck/images/driving.jpg);
+	background-image:url(../static/driving.jpg);
 	background-position:bottom;
 	background-repeat:no-repeat;
 	background-size:cover;

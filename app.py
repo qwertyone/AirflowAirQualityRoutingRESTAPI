@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 #from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from helper import gettrafficFlow, azureJSONmaparser

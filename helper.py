@@ -4,6 +4,7 @@ import requests
 from mapbox_vector_tile import decode
 
 def gettrafficFlow(lat, long, tileSize, zoom):
+	"""translate json coordinates into azure maps pixels and form the JSON command"""
 
 	latitude = lat
 	longitude = long
@@ -38,7 +39,74 @@ def gettrafficFlow(lat, long, tileSize, zoom):
 	return URL
 
 def azureJSONmaparser(URL):
+        """query and extract traffic data information from a PBF file"""
         out = requests.get(url=URL)
         tileLayer = mapbox_vector_tile.decode(out.content)
         trfficData = tileLayer["Traffic flow"]
         return jsonify({trfficData})
+
+obj="https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&tileSize=256&zoom=15&subscription-key=yf8upXHhjg4n0O5hf-i24-ZKPZN5kRbE4gGT-_3_TOU&x=20530&y=10275"
+
+def update_JSONvalues(obj, key):
+        """Update all values of specified key from nested JSON. obj is the JSON, key or k is the key, vis the value"""
+        obj = requests.get(url=URL)
+        def update(obj, key):
+                """Recursively search for values of key in JSON tree."""
+                if isinstance(obj, dict):
+                        for k, v in obj.items():
+                                if isinstance(v, (dict, list)):
+                                        update(v, key)
+                                        #print('Searching for Key')
+                                elif k == key:
+                                        """reset parameters here to incorporate future air pollution adjustments"""
+                                        if v > .75:
+                                                v = {key:'Best'}
+                                                obj.update(v)
+                                                #print('Overwriting key value: ' + str(v))
+                                                return v
+                                        elif .5 < v <= .75:
+                                                v = {key:'Good'}
+                                                obj.update(v)
+                                                #print('Overwriting key value: ' + str(v))
+                                                return v
+                                        elif .25 < v <=.5:
+                                                v = {key:'OK'}
+                                                obj.update(v)
+                                                return v
+                                        elif 0 <= v <= .25:
+                                                v = {key:'Avoid'}
+                                                obj.update(v)
+                                                return v
+                                        else:
+                                                print('Error in JSON')
+                                                pass
+                                        #arr.append(v)
+                                        #print(key + str(v))
+                elif isinstance(obj, list):
+                        for item in obj:
+                                update(item, key)
+                #return arr
+                #print(obj)
+        obj = update(obj, key)
+        return obj
+
+
+def extract_JSONvalues(obj, key):
+    """Pull all values of specified key from nested JSON."""
+    arr = []
+
+    def extract(obj, arr, key):
+        """Recursively search for values of key in JSON tree."""
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if isinstance(v, (dict, list)):
+                    extract(v, arr, key)
+                elif k == key:
+                    arr.append(v)
+        elif isinstance(obj, list):
+            for item in obj:
+                extract(item, arr, key)
+        return arr
+
+    results = extract(obj, arr, key)
+    return results

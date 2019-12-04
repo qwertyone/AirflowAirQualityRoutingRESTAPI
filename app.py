@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 #from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from helper import gettrafficFlow, azureJSONmaparser
+from helper import gettrafficFlow, overwrite_JSONvalues, azureJSONmaparser
 
 import os
 
@@ -37,7 +37,7 @@ class CoordinateJSONSchema(ma.Schema):
 #CoordinateJSONSchema  = CoordinateJSONSchema()
 
 #submit JSON request
-@app.route('/CoordinateJSON', methods=['POST'])
+@app.route('/CoordinateJSON', methods=['GET'])
 def add_CoordinateJSON():
 
     long = request.json['long']
@@ -51,10 +51,16 @@ def add_CoordinateJSON():
     tileSize = 256
     zoom = 15
     
-    URL = gettrafficFlow(lat, long, tileSize, zoom)
-    trfficData  = azureJSONmaparser(URL)
-    return trfficData
-
+    tileX, tileY = gettrafficFlow(lat, long, tileSize, zoom)
+    print('Tile X Calculated: ' + str(tileX))
+    print('Tile Y calculated: ' + str(tileY))
+    obj  = azureJSONmaparser(tileX, tileY, tileSize, zoom)
+    print('PBF File returned')
+    key = 'traffic_level'
+    print('Success @ Key: ' + str(obj))
+    overwrite_JSONvalues(obj, key)
+    print(obj)
+    return obj
     #return CoordinateJSONSchema.jsonify(newCoordinateJSON)
 
 #get a JSON request

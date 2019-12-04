@@ -520,7 +520,7 @@ jsn = json.dumps({'extent': 4096,
    'type': 2}]}, sort_keys=True)
 
 obj = json.loads(jsn)
-print(obj)
+print('Before: ' + str(obj))
 
 def extract_JSONvalues(obj, key):
     """Pull all values of specified key from nested JSON."""
@@ -542,10 +542,11 @@ def extract_JSONvalues(obj, key):
     results = extract(obj, arr, key)
     return results
 
-"""extract JSON values"""
+"""extract JSON values without replacement"""
 def update_JSONvalues(obj, key):
     """Update all values of specified key from nested JSON."""
-    """obj is the JSON, key or k is the key, vis the value"""
+    """obj is the JSON, key or k is the key, v is the value"""
+    """will only update within the console of use, otherwise return None"""
 
     def update(obj, key):
         """Recursively search for values of key in JSON tree."""
@@ -558,7 +559,7 @@ def update_JSONvalues(obj, key):
                     if v > .75:
                         v = {key:'Best'}
                         obj.update(v)
-                        #print('Overwriting key value: ' + str(v))
+                        print('Overwriting key value: ' + str(v))
                         return v
                     elif .5 < v <= .75:
                         v = {key:'Good'}
@@ -586,7 +587,47 @@ def update_JSONvalues(obj, key):
     #print(obj)
     obj = update(obj, key)
     return obj
+
+def overwrite_JSONvalues(obj, key):
+    """Update all values of specified key from nested JSON."""
+    """obj is the JSON, key or k is the key, v is the value"""
+
+
+    def update(obj, key):
+        """Recursively search for values of key in JSON tree."""
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if isinstance(v, (dict, list)):
+                    update(v, key)
+                    #print('Searching for Key')
+                elif k == key:
+                    if v > .75:
+                        obj[k] = 'Good'
+                        obj['pollution_level'] = obj.pop(k)
+                        #obj.update(v)
+                        return v
+                        #print('Overwriting key value: ' + str(v))
+                    elif 0 <= v <= .75:
+                        obj[k] = 'Avoid'
+                        obj['pollution_level'] = obj.pop(k)
+                        #obj.update(v)
+                        return v
+                    else:
+                        print('pass')
+                        pass
+                    #arr.append(v)
+                    #print(key + str(v))
+                
+        elif isinstance(obj, list):
+            for item in obj:
+                update(item, key)
+        #return arr
+    #print(obj)
+    obj = update(obj, key)
+    return obj
+
+
 key = 'traffic_level'
 
-print(update_JSONvalues(obj, key))
+overwrite_JSONvalues(obj, key)
 print(obj)

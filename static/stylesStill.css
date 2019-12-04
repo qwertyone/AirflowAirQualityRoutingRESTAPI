@@ -51,6 +51,10 @@ section{
 	margin-left:1em;
 }
 
+section > h1{
+	text-shadow: -2px -2px #FFF;
+	}
+
 section p {
 	float: left;
 	font-size:medium;

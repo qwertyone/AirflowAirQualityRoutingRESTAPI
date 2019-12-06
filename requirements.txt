@@ -2,3 +2,5 @@ flask
 flask_sqlalchemy
 flask_marshmallow
 marshmallow-sqlalchemy
+mapbox-vector-tile==1.2.0
+requests

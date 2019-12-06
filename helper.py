@@ -34,15 +34,18 @@ def gettrafficFlow(lat, long, tileSize, zoom):
 
 
 def azureJSONmaparser(tileX, tileY, tileSize, zoom):
-    """
-    API endpoint
-    """
+	"""
+	API endpoint
+	"""
+	print('Tile X:' + str(tileX))
+	print('Tile Y:' + str(tileY))
+	print('Tile Size' + str(tileSize))
+	print('Tile Zoom:' + str(zoom))
+	tileFormat = "pbf"
+	style = "relative"
+	key = "yf8upXHhjg4n0O5hf-i24-ZKPZN5kRbE4gGT-_3_TOU"
 
-    tileFormat = "pbf"
-    style = "relative"
-    key = "yf8upXHhjg4n0O5hf-i24-ZKPZN5kRbE4gGT-_3_TOU"
-
-    URL = "https://atlas.microsoft.com/traffic/flow/tile/{0}?api-version=1.0&style={1}&tileSize={2}&zoom={3}&subscription-key={4}&x={5}&y={6}".format(
+	URL = "https://atlas.microsoft.com/traffic/flow/tile/{0}?api-version=1.0&style={1}&tileSize={2}&zoom={3}&subscription-key={4}&x={5}&y={6}".format(
         tileFormat,
         style,
         tileSize,
@@ -50,11 +53,15 @@ def azureJSONmaparser(tileX, tileY, tileSize, zoom):
         key,
         tileX,
         tileY)
-    out = requests.get(url=URL)
-    tileLayer = mapbox_vector_tile.decode(out.content)
-    obj = tileLayer["Traffic flow"]
+	print('URL: ' +str(URL))
+	out = requests.get(url=URL)
+	print(out.content)
+	obj = mapbox_vector_tile.decode(out.content)
+	print(obj)
+	#tileLayer = mapbox_vector_tile.decode(out.content)
+	#obj = tileLayer["Traffic flow"]
 
-    return obj
+	return obj
 
 
 # obj="https://atlas.microsoft.com/traffic/flow/tile/pbf?api-version=1.0&style=relative&tileSize=256&zoom=15&subscription-key=yf8upXHhjg4n0O5hf-i24-ZKPZN5kRbE4gGT-_3_TOU&x=20530&y=10275"

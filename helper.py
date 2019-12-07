@@ -1,5 +1,5 @@
 '''this file is only for functioning code for the application. please test code remotely before implementing here.'''
-import numpy as np
+#import numpy as np
 import math
 import requests
 import mapbox_vector_tile

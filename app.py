@@ -51,23 +51,21 @@ def add_CoordinateJSON():
 
 	long = float(request.args.get('long'))
 	lat  = float(request.args.get('lat'))	 
-
-#    newCoordinateJSON = CoordinateJSON(long, lat)
-
-#    db.session.add(newCoordinateJSON)
-#    db.session.commit()
-
 	tileSize = 256
 	zoom = 15
     
 	tileX, tileY = gettrafficFlow(lat, long, tileSize, zoom)
 	print('Tile X Calculated: ' + str(tileX))
 	#print('Tile Y calculated: ' + str(tileY))
+	##return JSON file as obj
 	obj  = azureJSONmaparser(tileX, tileY, tileSize, zoom)
-	print('PBF File returned')
+	##calculate pollution levels
 	key = 'traffic_level'
-	#print('Success @ Key)
 	overwrite_JSONvalues(obj, key)
+	##change tile vector coordinates to lat and long
+	##this section of code is buggy. but this is an alpha
+	key = 'coordinates'
+	tileToCoordJSON(obj, key, zoom)
 	#print(obj)
 	return '''{}'''.format(obj)
 	#return CoordinateJSONSchema.jsonify(newCoordinateJSON)

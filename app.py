@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 #from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from helper import gettrafficFlow, overwrite_JSONvalues, azureJSONmaparser
+from helper import gettrafficFlow, overwrite_JSONvalues, azureJSONmaparser, tileToCoordJSON
 from flask import make_response
 
 import os
@@ -55,20 +55,22 @@ def add_CoordinateJSON():
 	zoom = 15
     
 	tileX, tileY = gettrafficFlow(lat, long, tileSize, zoom)
-	print('Tile X Calculated: ' + str(tileX))
+	#print('Tile X Calculated: ' + str(tileX))
 	#print('Tile Y calculated: ' + str(tileY))
 	##return JSON file as obj
-	obj  = azureJSONmaparser(tileX, tileY, tileSize, zoom)
+	obj = azureJSONmaparser(tileX, tileY, tileSize, zoom)
+	
 	##calculate pollution levels
 	key = 'traffic_level'
 	overwrite_JSONvalues(obj, key)
+
 	##change tile vector coordinates to lat and long
 	##this section of code is buggy. but this is an alpha
 	key = 'coordinates'
+	print('IMPORTANT')
 	tileToCoordJSON(obj, key, zoom)
 	#print(obj)
 	return '''{}'''.format(obj)
-	#return CoordinateJSONSchema.jsonify(newCoordinateJSON)
 
 #get a JSON request
 #@app.route('/CoordinateJSON/', methods=['GET'])

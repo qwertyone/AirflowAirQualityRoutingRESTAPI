@@ -154,12 +154,19 @@ def num2lat(y, zoom):
     lat = math.degrees(lat_rad)
     return (lat)
 
+def replacer(clst):
+    if type(clst[0]) is not list:
+        return num2deg(clst[0], clst[1])
+    else: return [replacer(n) for n in clst]
+
+    #print('the output of ''replacer(clst)'' is:')
+    #print(replacer(clst))
+
+
 def tileToCoordJSON(obj, key, zoom):
-    """overwrite all values of vector tile coordinates from nested JSON"""
-    """into lon and lat. obj is the JSON, key or k is the key, v is the value"""
-    """there is a list of uneven lists that needs addressed in this line of"""
-    """code."""
-    key = 'coordinates'
+    """Update all values of coordinates from nested JSON."""
+    """obj is the JSON, key or k is the key, v is the value"""
+
     def update(obj, key, zoom):
         """Recursively search for values of key in JSON tree."""
         if isinstance(obj, dict):
@@ -167,52 +174,23 @@ def tileToCoordJSON(obj, key, zoom):
                 #print('entering for loop:{0}{1}'.format(k,v))
                 if isinstance(v, (dict, list, tuple)):
                     update(v, key, zoom)
-                    
                     if k == key:
                         '''extract coordinates'''
                         #print('Extraction begins')
                         lst = [v]
-                        '''JSON call is variable with 2 known cases created by 2 or 3 brackets '''
-                        '''that start JSON query. uneven lists within list'''
-                        if str(lst)[0:4] == '[[[[':
-                            '''repair for multiline strings here'''
-                            #print(lst)
-                            #v = [[num2deg(x,y) for (x,y) in v] for v in lst]]
-                            #print('New coordinate inserted')
-                            pass
-                            
-                        elif str(lst)[0:3] == '[[[':
-                            lst = [[[[num2deg(x,y) for (x,y) in v] for v in lst]]]
-                            #v = lst
-                            #print(v)
-                            #return v
+                        obj[k]=replacer(clst = lst)
+                        print('list: {0}'.format(k))
                         
-                        elif str(lst)[0:2] == '[[':
-                            lst = [[[num2deg(x,y) for (x,y) in v] for v in lst]]
-                            #obj[k] = lst
-                            #v = lst
-                            #print('New coordinate inserted')
-                            #return v
+                    else:
+                        print('new case with' + k + 'list discovered.')
+                        v = 'error'
+                        return v
                         
-                        elif str(lst)[0:1] == '[':
-                            lst = [[num2deg(x,y) for (x,y) in v] for v in lst]
-                            #obj[k] = lst#print('New coordinate inserted')
-                            #v = lst
-                            #return v
                         
-                        else:
-                            print('new case with' + k + 'list discovered.')
-                            v = 'error'
-                            return v
-
-                        #print(v)#print(lst)
-                        obj[k] = lst
-                        #print(str(obj[k]))
-                        #return obj
                 else:
                     print(obj)
                     #print('Extraction passed')
-                 #   pass
+                    #pass
                 
         elif isinstance(obj, list):
             for item in obj:

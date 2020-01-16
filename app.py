@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, render_template
 #from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from helper import gettrafficFlow, overwrite_JSONvalues, azureJSONmaparser
+from helper import gettrafficFlow, overwrite_JSONvalues, azureJSONmaparser, tileToCoordJSON
+from flask import make_response
 
 import os
 
@@ -37,31 +38,39 @@ class CoordinateJSONSchema(ma.Schema):
 #CoordinateJSONSchema  = CoordinateJSONSchema()
 
 #submit JSON request
-@app.route('/CoordinateJSON', methods=['GET'])
+
+@app.route('/Coordinate', methods=['GET','POST'])
+def pull():
+	long = request.args.get('long')
+	lat  = request.args.get('lat')	
+	type(long)
+	return '''long is: {} and lat is: {}'''.format(long,lat)
+	
+@app.route('/CoordinateJSON', methods=['GET','POST'])
 def add_CoordinateJSON():
 
-    long = request.json['long']
-    lat = request.json['lat']
-
-#    newCoordinateJSON = CoordinateJSON(long, lat)
-
-#    db.session.add(newCoordinateJSON)
-#    db.session.commit()
-
-    tileSize = 256
-    zoom = 15
+	long = float(request.args.get('long'))
+	lat  = float(request.args.get('lat'))	 
+	tileSize = 256
+	zoom = 15
     
-    tileX, tileY = gettrafficFlow(lat, long, tileSize, zoom)
-    print('Tile X Calculated: ' + str(tileX))
-    print('Tile Y calculated: ' + str(tileY))
-    obj  = azureJSONmaparser(tileX, tileY, tileSize, zoom)
-    print('PBF File returned')
-    key = 'traffic_level'
-    print('Success @ Key: ' + str(obj))
-    overwrite_JSONvalues(obj, key)
-    print(obj)
-    return obj
-    #return CoordinateJSONSchema.jsonify(newCoordinateJSON)
+	tileX, tileY = gettrafficFlow(lat, long, tileSize, zoom)
+	#print('Tile X Calculated: ' + str(tileX))
+	#print('Tile Y calculated: ' + str(tileY))
+	##return JSON file as obj
+	obj = azureJSONmaparser(tileX, tileY, tileSize, zoom)
+	
+	##calculate pollution levels
+	key = 'traffic_level'
+	overwrite_JSONvalues(obj, key)
+
+	##change tile vector coordinates to lat and long
+	##this section of code is buggy. but this is an alpha
+	key = 'coordinates'
+	print('IMPORTANT')
+	tileToCoordJSON(obj, key, zoom)
+	#print(obj)
+	return '''{}'''.format(obj)
 
 #get a JSON request
 #@app.route('/CoordinateJSON/', methods=['GET'])
@@ -73,6 +82,10 @@ def add_CoordinateJSON():
 
 #@app.route('/CoordinateJSON/<id>', methods=['DELETE'])
 #def deleteCoordinateJSON(id):
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 #    CoordinateJSON = CoordinateJSON.query.get(id)
 #    db.session.delete(CoordinateJSON)

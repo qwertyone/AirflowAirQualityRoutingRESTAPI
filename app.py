@@ -4,6 +4,8 @@ from flask_marshmallow import Marshmallow
 from helper import gettrafficFlow, overwrite_JSONvalues, azureJSONmaparser, tileToCoordJSON
 from flask import make_response
 
+from temp_helper import main
+
 import os
 
 #init app
@@ -72,16 +74,21 @@ def add_CoordinateJSON():
 	#print(obj)
 	return '''{}'''.format(obj)
 
-#get a JSON request
-#@app.route('/CoordinateJSON/', methods=['GET'])
-#def getCoordinateJSON():
+@app.route('/GetRoute', methods=['GET','POST'])
+def get_Route():
 
-#    CoordinateJSON = CoordinateJSON.query.get(id)
+	lonA = float(request.args.get('lonA'))
+	latA = float(request.args.get('latB'))
 
-#    return jsonify(CoordinateJSON)
+	lonB = float(request.args.get('lonB'))
+	latB = float(request.args.get('latB'))	
+        A = (lonA,latA)
+        B = (lonB,latB)
+        obj = main(A,B)
+	#print(obj)
+	return '''{}'''.format(obj)
 
-#@app.route('/CoordinateJSON/<id>', methods=['DELETE'])
-#def deleteCoordinateJSON(id):
+
 
 @app.errorhandler(404)
 def not_found(error):

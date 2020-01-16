@@ -9,22 +9,27 @@ import requests
 import mapbox_vector_tile
 
 def pathFinder(A, B):
-
+    
+    route_df = pd.DataFrame()
+    
     location_point = A
-    G = ox.graph_from_point(location_point, distance=1000, clean_periphery=False)
+    G = ox.graph_from_point(location_point, distance=2000, clean_periphery=False)
     
     origin = A
     destination = B 
     
     origin_node = ox.get_nearest_node(G, origin)
     destination_node = ox.get_nearest_node(G, destination)
+  
+    routes = [p for p in nx.all_shortest_paths(G, origin_node, destination_node)]
     
-    route = nx.shortest_path(G, origin_node, destination_node, method='dijkstra')
-    fig, ax = ox.plot_graph_route(G, route)
+    for idx, route in enumerate(routes):
     
-    nodes, edges = ox.graph_to_gdfs(G)
-    route_df = nodes[nodes.index.isin(route)][["y", "x"]] # latitude, longitude
-    
+        nodes, edges = ox.graph_to_gdfs(G)
+        routes_stepwise = nodes[nodes.index.isin(route)][["y", "x"]] # latitude, longitude
+        routes_stepwise["route"] = idx + 1
+        route_df = route_df.append(routes_stepwise)
+        
     return route_df
 
 def tileCalculater(latitude, longitude ,tileSize = 512, zoom = 15):
@@ -92,14 +97,17 @@ def trafficFlow(tileX, tileY, tileSize = 512, zoom = 15):
 def main(A, B):
 
     optimalPath = pathFinder(A, B)
+    suggested_paths_with_pollution_score = {}
     
-    point_to_point_pollution = []
-    
-    for row in optimalPath.itertuples():
-    
-        tileX, tileY = tileCalculater(row.y, row.x, tileSize=512, zoom =15)
-        normalizedPollution = trafficFlow(tileX, tileY)
-        point_to_point_pollution.append(normalizedPollution)
-#         print(normalizedPollution)
+    for name, group in optimalPath.groupby("route"):
+        
+        point_to_point_pollution = []
+        
+        for row in group.itertuples():
+            tileX, tileY = tileCalculater(row.y, row.x, tileSize=512, zoom =15)
+            normalizedPollution = trafficFlow(tileX, tileY)
+            point_to_point_pollution.append(normalizedPollution)
+            
+        suggested_paths_with_pollution_score[name] = ((group[["x","y"]].values), np.average(point_to_point_pollution)*100)
 
-    print("Path is {0:0.2f}% clean.".format(np.average(point_to_point_pollution)*100))
+    return suggested_paths_with_pollution_score

@@ -76,16 +76,14 @@ def add_CoordinateJSON():
 
 @app.route('/GetRoute', methods=['GET','POST'])
 def get_Route():
-
 	lonA = float(request.args.get('lonA'))
 	latA = float(request.args.get('latB'))
 
 	lonB = float(request.args.get('lonB'))
 	latB = float(request.args.get('latB'))	
-
-    A = (lonA,latA)
-    B = (lonB,latB)
-    obj = main(A,B)
+	A = (lonA,latA)
+	B = (lonB,latB)
+	obj = main(A,B)
 	#print(obj)
 	return '''{}'''.format(obj)
 

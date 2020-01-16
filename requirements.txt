@@ -8,5 +8,3 @@ numpy
 pandas
 osmnx
 networkx
-matplotlib.pyplot
-IPython.display

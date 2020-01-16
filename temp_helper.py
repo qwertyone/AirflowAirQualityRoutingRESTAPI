@@ -8,14 +8,6 @@ import math
 import requests
 import mapbox_vector_tile
 
-import matplotlib.pyplot as plt
-from IPython.display import IFrame
-
-ox.config(log_console=True, use_cache=True)
-ox.__version__
-
-%matplotlib inline
-
 def pathFinder(A, B):
 
     location_point = A

@@ -4,3 +4,9 @@ flask_marshmallow
 marshmallow-sqlalchemy
 mapbox-vector-tile==1.2.0
 requests
+numpy
+pandas
+osmnx
+networkx
+matplotlib.pyplot
+IPython.display

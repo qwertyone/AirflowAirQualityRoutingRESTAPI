@@ -62,10 +62,10 @@ def get_Route():
 	lonB = float(request.args.get('lonB'))
 	latB = float(request.args.get('latB'))	
 	A = (lonA,latA)
-	print('TEST: '+ A)
+	print('TEST: '+ str(A))
 	B = (lonB,latB)
 	obj = main(A,B)
-	print(obj)
+	print(str(obj))
 	return '''{}'''.format(obj)
 
 

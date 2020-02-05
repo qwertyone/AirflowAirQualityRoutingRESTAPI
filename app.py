@@ -12,32 +12,12 @@ import os
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-#database
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.db')
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-#db = SQLAlchemy(app)
-
 #init ma
 ma = Marshmallow(app)
 
-#CoordinateJSON Class/Model
-#class CoordinateJSON(db.Model):
-#    id   = db.Column(db.Integer, primary_key=True)
-#    long = db.Column(db.Float)
-#    lat  = db.Column(db.Float)
-    
-#    def __init__(self, long, lat):
-
-#        self.long = long
-#        self.lat = lat
-
-##CoordinateJSON schema
 class CoordinateJSONSchema(ma.Schema):
     class Meta:
         fields = ('long', 'lat')
-
-#init schema
-#CoordinateJSONSchema  = CoordinateJSONSchema()
 
 #submit JSON request
 
@@ -82,9 +62,10 @@ def get_Route():
 	lonB = float(request.args.get('lonB'))
 	latB = float(request.args.get('latB'))	
 	A = (lonA,latA)
+	print('TEST: '+ A)
 	B = (lonB,latB)
 	obj = main(A,B)
-	#print(obj)
+	print(obj)
 	return '''{}'''.format(obj)
 
 

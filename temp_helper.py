@@ -90,8 +90,9 @@ def trafficFlow(tileX, tileY, tileSize = 512, zoom = 15):
                                                                                                                                                   tileX,
                                                                                                                                                   tileY) 
     out = requests.get(url=URL)
+    print("URL is: " + str(out))
     tileLayer = mapbox_vector_tile.decode(out.content)
-    
+    print("TileLayer is: " + str(tileLayer))
     return np.average(extractJsonValues(tileLayer["Traffic flow"], 'traffic_level'))
 
 def main(A, B):

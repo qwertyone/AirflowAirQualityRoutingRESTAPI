@@ -1,3 +1,5 @@
+##this file is critical to the service through Azure. The majority of my time was spent trying to address Azure machine problems with the python modules.
+
 apt-get update -y
 pip install --upgrade pip
 apt-get install -y python3-rtree

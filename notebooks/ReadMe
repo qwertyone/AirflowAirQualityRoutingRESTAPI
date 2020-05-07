@@ -1,1 +1,1 @@
-This folder contains the proof of concept contained in a Python Jupyter Notebook. To Run, open the file in Jupyter.
+This folder contains the proof of concept contained in a Python Jupyter Notebook. To Run, open the file in Jupyter. The functions are implemented in temp_helper.py for debugging and then final implementation into helper.py for production.
